@@ -1,0 +1,72 @@
+<%- include('partials/header') %>
+<style>
+      /* *{
+        outline: 1px solid red;
+      } */
+        @media screen and (max-width: 350px) {
+        body {
+          width: min-content;
+        }
+        
+      }
+      @media screen and (max-width: 375px) {
+        body {
+          width: min-content;
+        }
+      }
+      @media screen and (max-width: 450px) {
+        body {
+          width: min-content;
+        }
+      }
+      @media screen and (max-width: 767px) {
+        #edit{
+          padding-inline: 27%;
+        }
+      }
+    
+  </style>
+  <div class="container-fluid mt-3 p-1  " style="background-color: #00539cff; color: aliceblue;">
+    <h2 class="mt-4 text-center "> Course Management Application</h2>
+  </div>
+  <h5 style="text-align: center;" class="container mt-3">In learning you will teach, and in teaching you will learn.</h5>
+  <div class="container mt-5">
+
+    <table class="table table-borderless table-striped ">
+      <thead style="background-color: #4a536b; color: white;">
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Course Name</th>
+          <th scope="col">Course Duration</th>
+          <th scope="col">Course Fees</th>
+          <th scope="col">Course Updation</th>
+          <th scope="col">Course delection</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if(data.length){
+          for(var i = 0; i < data.length; i++)
+           {%>
+        <tr>
+          <th scope="row"><%= data[i].id%></th>
+          <td><%= data[i].Coursename%></td>
+          <td><%= data[i].duration%></td>
+          <td><%= data[i].fees%></td>
+          <td>
+            <a href="/edit/<%= data[i].id%>" class="btn ml-3 mr-3" id="edit" data-toggle="button" style="background-color: #594a72; color: aliceblue;">Edit</a>
+          </td>
+          <td>   <a href="/delete/<%= data[i].id%>" class="btn" id="delete" data-toggle="button" style="background-color: rgb(212, 64, 64); color: aliceblue;"> Delete</a></td>
+        </tr>
+        <% }
+      }else{ %>
+           <tr>
+              <td colspan="5">No Courses</td>
+           </tr>
+           <% } %>
+         
+      </tbody>
+    </table>
+    <a href="/create" class="btn mt-4 " style="background-color: #0063b2ff; color: white;">Create Course</a>
+
+
+</div>
