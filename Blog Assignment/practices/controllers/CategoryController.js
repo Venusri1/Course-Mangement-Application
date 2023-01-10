@@ -2,6 +2,7 @@ const express=require('express');
 const router =express.Router()
 const Categorie=require('../models/Categories');
 
+//allcategor controller
 exports.allCategorie_get=(req,res)=>{
     Categorie.find()
     .exec()
@@ -16,6 +17,7 @@ exports.allCategorie_get=(req,res)=>{
     
 }
 
+//used to add category
 exports.addCategory_post=(req,res)=>{
     // console.log("req", req.body);
     const addCategorie = new Categorie({
@@ -35,6 +37,7 @@ exports.addCategory_post=(req,res)=>{
     res.redirect('/allcategorie');
 }
 
+//editing the category
 exports.editCategory=(req,res)=>{
     const id=req.params.id;
     Categorie.findById(id).exec()
@@ -47,6 +50,8 @@ exports.editCategory=(req,res)=>{
     })
  }
 
+
+//updating the category
  exports.updateCategory=(req,res)=>{
     const id=req.params.id;
     Categorie.findByIdAndUpdate(id,{
@@ -62,6 +67,7 @@ exports.editCategory=(req,res)=>{
     res.redirect('/allcategorie')
 }
 
+ //delete the category
 exports.deleteCategory=(req,res)=>{
     const id=req.params.id;
     Categorie.findByIdAndRemove(id)
