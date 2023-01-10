@@ -9,7 +9,7 @@ const pagesController=require('../controllers/PagesrouteController');
 
 // const Admin=require('../models/Admins');
 
-
+//render the login page
 router.get("/Login", (req, res) => {
   res.render("Login" );
 });
@@ -21,7 +21,7 @@ router.get("/Login", (req, res) => {
 //only Admins can login through this route
 router.post("/Login", pagesController.login);
 
-
+//used for logout
 router.get('/Logout',pagesController.logout)
 
 
