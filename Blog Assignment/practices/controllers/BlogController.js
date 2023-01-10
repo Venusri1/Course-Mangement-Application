@@ -3,7 +3,7 @@ const router =express.Router();
 const Blogss=require('../models/Allblog');
 const Categorie=require('../models/Categories');
 
-
+//adding blog with images
 exports.blog_post=(req,res)=>{
       let blogImage;
    if(req.file){
@@ -36,6 +36,7 @@ exports.blog_post=(req,res)=>{
    })
 }
 
+//editing the blog
 exports.editblog=async(req,res)=>{
    const id=req.params.id;
    const allcategories = await Categorie.find().exec()
@@ -53,6 +54,7 @@ exports.editblog=async(req,res)=>{
    })
 }
 
+//update the blogs
 exports.updateBlog=(req,res)=>{
    const id=req.params.id;
   let newimage='';
@@ -92,6 +94,7 @@ exports.updateBlog=(req,res)=>{
     
 }
 
+//deleting the blog data
 exports.deleteBlog=(req,res)=>{
    const id=req.params.id;
    Blogss.findByIdAndRemove(id)
@@ -107,6 +110,7 @@ exports.deleteBlog=(req,res)=>{
 
    }
 
+//used to show select category in add blogs 
    exports.addblog_get=(req,res)=>{
       Categorie.find()
       .exec()
@@ -121,6 +125,7 @@ exports.deleteBlog=(req,res)=>{
      
   }
 
+   //used to show the blog details to user
   exports.show_get=(req,res)=>{
    console.log("req.params", req.params);
        const slug=req.params.slug;
@@ -136,7 +141,9 @@ exports.deleteBlog=(req,res)=>{
            }
    })
    }
-
+  
+  
+//used to render admin
    exports.admin_get=(req,res)=>{
       Blogss.find()  
       .populate("name").sort({
@@ -151,6 +158,8 @@ exports.deleteBlog=(req,res)=>{
           }
       })
   }
+   
+   //user dashboard
 
   exports.dashBoard=async(req,res)=>{
    try{
@@ -173,6 +182,8 @@ exports.deleteBlog=(req,res)=>{
            console.log(err.message);
        }
    }
+  
+  //searchbar in user dashboard
 
    exports.searchbar=async(req,res)=>{
       let search=' ';
@@ -192,6 +203,7 @@ exports.deleteBlog=(req,res)=>{
       })
   }
 
+   //deetails of all blogs
   exports.allblog_get=(req,res)=>{
    Blogss.find()
    .populate("name")
