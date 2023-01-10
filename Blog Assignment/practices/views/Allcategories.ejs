@@ -1,0 +1,49 @@
+<%- include('layouts/Main') %>
+<%- include('layouts/Adminheader') %>
+
+<div class="container mt-4 p-3">
+  <div>
+  <!-- <div style="color: aliceblue;
+  background-color: #0a4275;"> -->
+    <% if(message) { %>
+      <div class="alert alert-dismissible  alert-primary fade show alert - <%= message.type %>" role="alert">
+          <button class="btn-close light" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+          <strong> <%= message.message %></strong>
+      </div>
+  <% }%>
+
+  </div>
+    
+    <h3>All Categories</h3>
+    <table class="container-sm table table-striped mt-3 p-3 table-sm">
+     <% if(allcategorie != ' ') { %>
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col" >Categories Name </th>
+          <th scope="col">Edit</th>
+          <th scope="col">delete</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% allcategorie.forEach((row,index)=>{ %>
+          <tr>
+            <th ><%= index+1 %></th>
+            <td><%= row.name %></td>
+            <td>
+                <a href="/edit/<%= row._id %>" class="btn ml-3 mr-3" id="edit" data-toggle="button" style="background-color: #594a72; color: aliceblue;">Edit</a>
+              </td>
+              <td><a href="/delete/<%= row._id %>" class="btn ml-3 mr-3 btn-danger" id="edit" data-toggle="button" style="color: aliceblue;">Delete</a></td>
+          </tr>
+          <% }) %>
+         
+
+   
+      </tbody>
+    <% } else { %>
+      <h1>NOt found</h1>
+    <% } %>
+          
+      </table>
+
+<%- include('layouts/Footer') %>

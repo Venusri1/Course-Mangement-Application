@@ -1,0 +1,60 @@
+<%- include('layouts/Main') %>
+<%- include('layouts/Adminheader') %>
+
+
+<link rel="stylesheet" type="text/css" href="/assets/blog.css">
+<body>
+  <div class="container mt-4">
+    <% if(message) { %>
+      <div class="alert alert-dismissible  alert-primary fade show alert - <%= message.type %>" role="alert">
+          <button class="btn-close light" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+          <strong> <%= message.message %></strong>
+      </div>
+  <% }%>
+      <h1>Blogs</h1>
+    
+      <% if(blogs != '') {%>
+        <% blogs.forEach((row)=>{ %>
+          <div class="card mb-3" >
+            <a href="/show/<%= row.slug %>"   style="text-decoration:none; color:black">     
+            <div class="row g-0" style="padding: 15px;">
+       
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h3 class="card-title"><%= row.title %></h3>
+                  <h6 class="card-subtitle"><%= row.name.name %></h6>
+                  <!-- <p class="card-text">
+                    
+                    <%= row.description %>
+              
+                  </p> -->
+          
+                  <p class="card-text">
+                    <small><%= row.createAtdate.toDateString() %></small>
+                    <!-- <small class="text-muted"><%= new Date().toLocaleString().split(',')[0] %></small> -->
+                  </p>
+                  <!-- <a href="/show/<%= row.slug %>" >Read More</a> -->
+                </div>
+              </div>
+        
+         
+              <div class="col-md-4 text-align-center" >
+                <img
+                  src="<%= row.images %>"
+                  class="img-fluid rounded-start"
+                />
+              </div>
+            
+            </div>
+          </a>
+          </div>
+      <%  }) %>
+     <% } else {%>
+      <div>
+        not found
+      </div>
+     <% } %>
+    </div>
+
+  <%- include('layouts/Footer') %>
+

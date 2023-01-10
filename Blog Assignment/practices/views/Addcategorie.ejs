@@ -1,0 +1,21 @@
+<%- include('layouts/Main') %>
+<%- include('layouts/Adminheader') %>
+<div class="container-sm mt-4">
+<h3>Add Categories</h3>
+
+<form action="/addcategorie" method="post">
+    <!-- Name input -->
+    <div class="container form-outline mb-4">
+        <label class="form-label" for="form5Example1" >Name</label>
+      <input type="text" name="name" id="form5Example1" class="form-control" placeholder="Add Categoria" required />
+    
+    </div>
+  
+     <!--Submit button -->
+    <button type="submit" class="btn btn-success btn-block mb-4">Save</button>
+    <a type="cancel" class="btn btn-danger btn-block mb-4" href="/allcategorie">Cancel</a>
+  </form>
+</div>
+
+
+<%- include('layouts/Footer') %>

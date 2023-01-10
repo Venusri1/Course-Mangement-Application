@@ -1,0 +1,57 @@
+<%- include('layouts/Main') %>
+<%- include('layouts/Adminheader') %>
+
+<section class=" mt-5">
+  <div class="container mt-4">
+    <% if(message) { %>
+      <div class="alert alert-dismissible  alert-primary fade show alert - <%= message.type %>" role="alert">
+          <button class="btn-close light" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+          <strong> <%= message.message %></strong>
+      </div>
+  <% }%>
+
+
+    
+      <h1>Blogs</h1>
+      <table class="container-sm table table-striped mt-3 p-3">
+      <% if(blogs != '') {%>
+         <thead>
+           <tr>
+             <th scope="col">Id</th>
+             <th scope="col">Title</th>
+             <th scope="col" >Categories Name & Description</th>
+             <!-- <th scope="col">Description</th> -->
+             <th scope="col">Edit & delete</th>
+         
+           </tr>
+         </thead>
+         <tbody>
+          <% blogs.forEach((row,index)=>{ %>
+             <tr>
+               <th ><%= index+1 %></th>
+               <td><%= row.title %></td>
+               <td>  <%= row.name.name %><br><%= row.description %></td>
+               <!-- <td><%= row.description %></td> -->
+               <td>
+                <a href="/edits/<%= row._id %>" class="btn"><i class="bi bi-pencil-square"></i></a>
+                <a href="/deletes/<%= row._id %>" class="btn"><i class="bi bi-trash2-fill"></i></a>
+                
+              </td>
+                 
+             </tr>
+             <% }) %>
+         </tbody>
+       <% } else { %>
+         <h1 style="text-align: center; color:darkblue;">Not found any Blogs</h1>
+       <% } %>
+             
+         </table>
+
+  </div>
+
+
+</section>
+  
+
+<%- include('layouts/Footerblogs') %>
+  

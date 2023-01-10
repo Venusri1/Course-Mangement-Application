@@ -1,0 +1,36 @@
+<%- include('layouts/Main') %>
+<%- include('layouts/Dashboardheader') %>
+<link rel="stylesheet" type="text/css" href="/assets/blog.css">
+<body>   
+            <div class="container mt-4">
+                <div class="container">
+                    <h1><%= bloggs[0].title %></h1>
+                </div>
+                    <div class="container mt-3">
+                        <h4 ><%= bloggs[0].name.name %></h4>
+                    </div>
+               <div class="container mt-2">
+                <h6>
+                    <small><%= bloggs[0].createAtdate.toDateString() %></small>
+                </h6>
+               </div>
+               <div class="container mt-4">
+                  
+                <img
+                src="/<%= bloggs[0].images %>"
+                class="img-fluid rounded-start text-align-center h-75 " 
+              />
+
+               </div>
+                 
+                    <div class="container">
+                        <p class="mt-4" style="white-space: pre-wrap; word-wrap: break-word;  font-family: Times New Roman, Times, serif; font-size: 22px;" >
+                            <%= bloggs[0].description %>
+                          </p>
+                </div>
+            </div>       
+</div>
+
+
+
+</body>

@@ -1,0 +1,20 @@
+<%- include('layouts/Main') %>
+<%- include('layouts/Adminheader') %>
+<div class="container-sm mt-4">
+<h3>Update Categories</h3>
+
+<form action="/update/<%= updatecategory._id%>" method="post">
+    <!-- Name input -->
+    <div class="container form-outline mb-4">
+        <label class="form-label" for="form5Example1" >Name</label>
+      <input type="text" name="name" id="form5Example1" class="form-control" placeholder="Add Categoria" value="<%= updatecategory.name %>" required />
+    
+    </div>
+  
+     <!--Submit button -->
+    <button type="submit" class="btn btn-success btn-block mb-4">Update Categories </button>
+  </form>
+</div>
+
+
+<%- include('layouts/Footer') %>

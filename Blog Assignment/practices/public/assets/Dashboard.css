@@ -1,0 +1,12 @@
+.header{
+    color: aliceblue;
+    background-color: #0a4275;
+   
+}
+
+ @media screen and (max-width:319px) {
+    .header{
+        max-width: 100%;
+
+    }
+ }

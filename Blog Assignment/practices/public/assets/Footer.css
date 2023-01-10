@@ -1,0 +1,28 @@
+@media screen and(max-width:425px) {
+    .footer{
+        position: absolute;
+    }
+    
+}
+
+.footer {
+    position:fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    background-color: #0a4275;
+    margin-top: auto;
+ }
+
+.footerblog{
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    background-color: #0a4275;
+    margin-top: auto;
+
+}
