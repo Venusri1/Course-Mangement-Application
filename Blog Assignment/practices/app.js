@@ -3,8 +3,10 @@ const path=require('path');
 const bodyParser=require('body-parser');
 const { default: mongoose } = require('mongoose');
 const session=require('express-session');
+
+//server port
 const port=process.env.PORT || 3200;
-const flash=require('connect-flash')
+
 
 // const Credentials=require('./Credentials/Credentials');
 
@@ -17,6 +19,7 @@ app.use(bodyParser.json());
 //path for public folder for css and images
 const public=path.join(__dirname,'/public');
 
+//images will upload in the uploads folder
 app.use(express.static("uploads"));
 
 // setting mongodb  connection
@@ -38,7 +41,9 @@ app.use(session({
     saveUninitialized: true,
   
   }));
-  
+ 
+
+//used to show message in files
 app.use((req,res,next)=>{
     res.locals.message=req.session.message;
     delete req.session.message;
@@ -54,19 +59,8 @@ app.use('',require('./routes/Categories'));
 app.use('',require('./routes/Blogs'))
 
 
-// app.use((req,res,next)=>{
-//   // res.header('Access-Control-Allow-Origin','*');
-//   req.headers(
-//       'Access-Control-Allow-Origin',
-//       'Origin,X-Requested-With,Content-Type,Accept,Authorization'
-//   );
-//   if(req.method === 'OPTION'){
-//       res.header('Access-Control-Allow-Methods','PUT,POST,PATCH,GET,DELETE') 
-//       return res.status(200).json({});
-//   }
-//   next();
-// });
 
 
 
+//server will on this port of 3200
 app.listen(port);
