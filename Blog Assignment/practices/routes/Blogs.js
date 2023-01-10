@@ -39,18 +39,18 @@ router.get('/',blogController.dashBoard);
 
 //Admin Dashboard route
 router.get('/Admin',blogController.admin_get);
-        
+
+//used to show blog data to user        
 router.get('/show/:slug',upload,blogController.show_get);
 
 
-    
+//editing blogs    
 router.get('/edits/:id',blogController.editblog);
 
  // posting updating data of categories
  router.post('/updates/:id',upload,blogController.updateBlog);
  
-
-
+//delete the blig data
 router.get('/deletes/:id',blogController.deleteBlog);
        
 
