@@ -6,7 +6,7 @@ const bcrypt = require("bcrypt");
 const { render } = require("ejs");
 const { default: mongoose } = require("mongoose");
 
-
+//admin login
 exports.login=(req, res) => {
     Admins.find({ emailId: req.body.emailId})
       .exec()
@@ -56,6 +56,7 @@ exports.login=(req, res) => {
   
   }
 
+//admin logout
   exports.logout=async(req,res)=>{
     const user=await Admins.find().exec()
     let data= await Admins.findByIdAndUpdate({_id:user[0]._id},{ $set:
