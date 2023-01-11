@@ -83,8 +83,8 @@ exports.updateBlog=(req,res)=>{
 
     }).exec()
     .then(req.session.message={
-        type:'Update Categorie',
-        message:'Categorie was updated'
+        type:'Update Blog',
+        message:'Blog was updated'
     })
     .catch((err)=>{
         res.json({message:err.message,type:'danger'})
@@ -101,8 +101,8 @@ exports.deleteBlog=(req,res)=>{
    .exec()
    .then(
        req.session.message={
-                       type:'Delete Categorie',
-                       message:'Categorie was Deleted Successfull'
+                       type:'Delete Blog',
+                       message:'Blog was Deleted Successfull'
        })
        .catch(err =>{res.json({message:err.message,type:'danger'})});
        res.redirect('/allblog')
