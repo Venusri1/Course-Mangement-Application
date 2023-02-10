@@ -19,30 +19,30 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'pages/homepage' },
-  'GET /signup': "UserController.signup",
-  'POST /signup': "UserController.add",
-  'GET /login': "LoginController.login",
-  'POST /login':"LoginController.loginpost",
-  'GET /logout':"LoginController.logout",
+  '/': { view: 'pages/homepage' }, //home page
+  'GET /signup': "UserController.signup", //get route for signup
+  'POST /signup': "UserController.add", //post route for signup
+  'GET /login': "LoginController.login", //get route login
+  'POST /login':"LoginController.loginpost", //post route login
+  'GET /logout':"LoginController.logout", // get route logout
 
-  'GET /account':"AccountController.account",
-  'POST /account':"AccountController.addaccount",
-  'GET /editaccount/:id':"AccountController.editAccount",
-  'POST /updateaccount/:id':"AccountController.updateaccount",
-  'GET /delete/:id':"AccountController.deleteaccount", 
+  'GET /account':"AccountController.account",  //get route for account
+  'POST /account':"AccountController.addaccount", //post route for account
+  'GET /editaccount/:id':"AccountController.editAccount", //get route to edit account name
+  'POST /updateaccount/:id':"AccountController.updateaccount",  //post route to update account name
+  'GET /delete/:id':"AccountController.deleteaccount", //get route to delete account name
 
-  'GET /transaction/:id':"TransactionController.viewtransaction",
-  'GET /addtransaction/:id':"TransactionController.addtransaction",
-  'POST /addtran/:id':"TransactionController.trans",
+  'GET /transaction/:id':"TransactionController.viewtransaction", //get route for transaction and member
+  'GET /addtransaction/:id':"TransactionController.addtransaction", //get transaction page
+  'POST /addtran/:id':"TransactionController.trans", //post route to add transaction 
 
-  'GET /edittransaction/:id':"TransactionController.edit",
-  'POST /update/:id':"TransactionController.updatetransaction",
-  'GET /deletetrasnsaction/:id':"TransactionController.deletetrasnsaction",
+  'GET /edittransaction/:id':"TransactionController.edit", //edit transaction
+  'POST /update/:id':"TransactionController.updatetransaction", //update trsanction by post route
+  'GET /deletetrasnsaction/:id':"TransactionController.deletetrasnsaction", //get route for delete route 
 
-  // 'GET /transaction':"TransactionController.member",
-  'POST /memberdetails/:id':"MembersController.details",
-  'GET /deletemem/:id':"MembersController.deletemem"
+ 
+  'POST /memberdetails/:id':"MembersController.details", //post route for members
+  'GET /deletemem/:id':"MembersController.deletemem" // get route to delete members
 
 
 
