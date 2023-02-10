@@ -1,0 +1,30 @@
+<!-- Nav bar -->
+<nav class="navbar navbar-light ">
+  <div class="container-fluid">
+    <a class="navbar-brand">Expense Manager</a>
+    <form class="d-flex me-5">
+      <a href="/logout" class="btn btn-warning">Logout</a>
+    </form>
+  </div>
+</nav>
+
+
+<div class="container-sm mt-4">
+    <h3>Edit Account</h3>
+    <div class="container">
+      <form action="/updateaccount/<%= account.id %>" method="post">
+        <!-- Name input -->
+        <div class="container form-outline mb-4">
+            <label class="form-label" for="form5Example1" >Name</label>
+          <input type="text" name="accountname" id="form5Example1" class="form-control" placeholder="Edit Account" value="<%= account.accountname %>" required />
+        
+        </div>
+      
+         <!--Submit button -->
+        <button type="submit" class="btn btn-success btn-block mb-4">save </button>
+      </form>
+
+    </div>
+   
+    </div>
+    

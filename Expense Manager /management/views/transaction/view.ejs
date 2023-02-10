@@ -1,0 +1,195 @@
+
+<!-- Nav bar -->
+<nav class="navbar navbar-light " id="navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand">Expense Manager</a>
+      <form class="d-flex me-5">
+        <a href="/logout" class="btn btn-warning">Logout</a>
+      </form>
+    </div>
+  </nav>
+
+
+  <div class="conatiner m-5">
+    <% flash.get('success').forEach(function (message) { %>
+    <div class="alert alert-dismissible alert-success fade show" role="alert">
+      <button
+        class="btn-close light"
+        type="button"
+        data-bs-dismiss="alert"
+        aria-label="close"
+      ></button>
+      <strong> <%= message %></strong>
+    </div>
+    <% }) %>
+  </div>
+
+  <div class="conatiner m-5">
+    <% flash.get('delete').forEach(function (message) { %>
+    <div class="alert alert-dismissible alert-danger fade show" role="alert">
+      <button
+        class="btn-close light"
+        type="button"
+        data-bs-dismiss="alert"
+        aria-label="close"
+      ></button>
+      <strong> <%= message %></strong>
+    </div>
+    <% }) %>
+  </div>
+  
+  
+
+<style>
+  .body {
+     margin: 0em;
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    overflow-y: auto;
+    z-index: 0;
+    background-color: hsl(0,0%,100%);
+}
+
+  .page:target {
+    left: 0vw;
+    z-index: 1;
+}
+</style>
+<script>
+  function show(shown, hidden) {
+    document.getElementById(shown).style.display='block';
+    document.getElementById(hidden).style.display='none';
+    return false;
+  }
+  </script>
+  </head>
+  <body>
+      
+    <div id="Page1">
+      
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col">
+            <h3>Account details</h3>
+          </div>
+          <div class="col">
+            <a href="/account" class="btn btn-outline-warning ms-5 ">View Accounts</a>
+          </div>
+        </div>
+        
+        
+    
+        <div class="container mt-5"><h5>Balance : <%= account.balance %></h5></div>
+
+        <div class="row mt-5">
+     
+            <div class="col ms-5 ps-5">
+              <a href="#" onclick="return show('Page2','Page1');" class="btn btn-warning ms-5 ">View Member</a>
+              
+            </div>
+        </div>
+        <table class="table mt-5">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">id</th>
+                <th scope="col">Date</th>
+                <th scope="col">Type</th>
+                <th scope="col">Description</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Createby</th>
+                <th scope="col">Edit</th>
+                <th scope="col">delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% transaction.forEach((transaction,index)=>{ %>
+              <tr>
+                <th scope="row"><%= index+1 %></th>
+                <td><%= transaction.date %></td>
+                <td><%= transaction.select %></td>
+                <td><%= transaction.description %></td>
+                <td><%= transaction.amount %></td>
+                <td><%= transaction.created %></td>
+                <td><a href="/edittransaction/<%= transaction.id %>" class="btn btn-outline-success" ><i class="bi bi-pencil-square"></i></a></td>
+                <td><a href="/deletetrasnsaction/<%= transaction.id %>" class="btn btn-outline-danger" ><i class="bi bi-trash2-fill"></i></button></td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+    
+          <a href="/addtransaction/<%= account.id %>" class="btn btn-warning">Add transaction</a>
+    
+    </div>
+    
+    
+      </div>
+    </div>
+      
+    <div id="Page2" style="display:none">
+      <div class="container">
+        <div class="row mt-5">
+          <div class="col ms-5"><h2> Members details </h2></div>
+          <div class="col ms-5 ps-5"><a href="#" onclick="return show('Page1','Page2'); "class="btn btn-warning ms-5 " >View Transaction</a></div>
+      </div>
+      <% flash.get('valid').forEach(function (message) { %>
+        <div class="alert alert-dismissible  alert-success fade show " role="alert">
+          <button class="btn-close light" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+          <strong>  <%= message %></strong>
+      </div>
+      <% }) %>
+      <% flash.get('invalid').forEach(function (message) { %>
+        <div class="alert alert-dismissible  alert-danger fade show " role="alert">
+          <button class="btn-close light" type="button" data-bs-dismiss="alert" aria-label="close"></button>
+          <strong>  <%= message %></strong>
+      </div>
+      <% }) %>
+     
+        <div class="container mt-5">
+          <form class="d-flex" action="/memberdetails/<%= account.id %>" method="post">
+            <input class="form-control me-2" type="text" name="email" placeholder="Enter Email id" aria-label="Email" required>
+            <button class="btn btn-warning" type="submit">submit</button>
+          </form>
+        </div>
+      
+      <div class="container">
+        <table class="table mt-5">
+          <thead class="thead-light">
+           
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Role</th>
+              <th scope="col">delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td><%= owner.firstname +" "+owner.lastname %></td>
+              <td>owner</td>
+              <td><a class="btn btn-outline-danger" type="submit" href="#"><i class="bi bi-trash2-fill"></i></a></td>
+              
+            </tr>
+            <% member.forEach((member,index)=>{ %>
+            <tr>
+              <th scope="row"><%= index+2 %></th>
+              <td><%= member.user.firstname +" "+member.user.lastname %></td>
+              <td><%= member.role %></td>
+              <td><a class="btn btn-outline-danger" type="submit" href="/deletemem/<%= member.id %>"><i class="bi bi-trash2-fill"></i></a></td>
+            </tr>
+            <% }) %>
+          
+          </tbody>
+        </table>
+      </div>
+      </div>
+    
+    </div>
+      
+  </body>

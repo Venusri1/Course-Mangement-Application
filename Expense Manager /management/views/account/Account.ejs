@@ -1,0 +1,100 @@
+
+<!-- Nav bar -->
+<nav class="navbar navbar-light">
+  <div class="container-fluid">
+    <a class="navbar-brand">Expense Manager</a>
+    <form class="d-flex me-5">
+      <a href="/logout" class="btn btn-warning">logout</a>
+    </form>
+  </div>
+</nav>
+
+
+<div class="conatiner m-5">
+  <% flash.get('success').forEach(function (message) { %>
+  <div class="alert alert-dismissible alert-success fade show" role="alert">
+    <button
+      class="btn-close light"
+      type="button"
+      data-bs-dismiss="alert"
+      aria-label="close"
+    ></button>
+    <strong> <%= message %></strong>
+  </div>
+  <% }) %>
+</div>
+<div class="conatiner m-5">
+  <% flash.get('invalid').forEach(function (message) { %>
+  <div class="alert alert-dismissible alert-danger fade show" role="alert">
+    <button
+      class="btn-close light"
+      type="button"
+      data-bs-dismiss="alert"
+      aria-label="close"
+    ></button>
+    <strong> <%= message %></strong>
+  </div>
+  <% }) %>
+</div>
+
+
+<h1 class="text-center mt-4">Account</h1>
+<div class="container">
+  <!-- used to add account name -->
+  <div class="container m-5">
+    <form class="d-flex" method="post" action="/account">
+      <input
+        class="form-control me-2"
+        type="text"
+        name="accountname"
+        id="accountname"
+        placeholder="Add account name"
+        aria-label="Email"
+        required
+      />
+      <button class="btn btn-warning" type="submit">submit</button>
+    </form>
+  </div>
+
+  <!-- table code -->
+  <table class="table mt-5">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">id</th>
+        <th scope="col">Account Name</th>
+        <th scope="col">Balance</th>
+        <th scope="col">view</th>
+        <th scope="col">Edit</th>
+        <th scope="col">delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% account.forEach((account,index)=>{ %>
+      <tr>
+        <th scope="row"><%= index+1 %></th>
+        <td><%= account.accountname %></td>
+        <td><%= account.balance%></td>
+        <td>
+          <a
+            href="/transaction/<%= account.id %>"
+            class="btn btn-outline-warning"
+            ><i class="bi bi-eye">view</i></a
+          >
+        </td>
+        <td>
+          <a
+            href="/editaccount/<%= account.id %>"
+            class="btn btn-outline-success"
+            ><i class="bi bi-pencil-square">edit</i></a
+          >
+        </td>
+        <td>
+          <a href="/delete/<%= account.id %>" class="btn btn-outline-danger"
+            ><i class="bi bi-trash2-fill">delete</i></a
+          >
+        </td>
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,47 @@
+<div class="container mt-5">
+    <h3>Update transaction</h3>
+      <form action="/update/<%=transaction.id %>" method="post" id="add-form" class="mt-5">
+
+        <div class="form-outline mt-3">
+          <label for="date" class="col-1 col-form-label">Date</label>
+          <input type="date" class="form-control" id="date" name="date" value="<%= transaction.date %>" required/>
+        </div>
+    
+
+        <label for="select">Select transaction</label>
+        <select id="select" name="select" class="form-control" required>
+            <option>
+              <%= transaction.select %>
+            </option>
+        </select>
+        
+        <label for="select mt-5">Created by name</label>
+        <select class="form-control" id="created" name="created" required>
+          <option>
+            <%= owner.firstname %> <%= owner.lastname %>
+          </option>
+        
+        </select>
+        
+          <!-- Message input -->
+          <div class="form-outline mt-3">
+            <label class="form-label" for="description">Description</label>
+            <textarea class="form-control" id="description" rows="4" name="description" required><%= transaction.description %></textarea>
+          </div>
+                <!-- Amount input -->
+                <div class="container form-outline mt-3">
+                  <label class="form-label" for="title">Amount</label>
+                <input type="text" class="form-control" placeholder="Enter Amount"name="amount" value="<%= transaction.amount %>" required /> 
+       
+          <!-- Submit button -->
+          <button type="submit" class="btn btn-warning mt-3">Update transaction</button>
+  
+        </form>
+  </div>
+  
+  <script type="text/javascript">
+    window.onload = function() { //from ww  w . j  a  va2s. c  o  m
+      var today = new Date().toISOString().split('T')[0];
+      document.getElementsByName("date")[0].setAttribute('max', today);
+    }
+  </script>
