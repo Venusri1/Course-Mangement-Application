@@ -6,7 +6,7 @@
  */
  const bcrypt=require('bcrypt');
  const jwt=require('jsonwebtoken');
-
+const {  process } = require("../../config/env/constants");
 module.exports = {
 
     // signup route
@@ -37,7 +37,7 @@ module.exports = {
             res.status(400).json({message:'invaild email and password'})
         }
         else{
-            const token =await jwt.sign({id:admin.id},"secret",{
+            const token =await jwt.sign({id:admin.id},process.env.JWT_KEY,{
                 expiresIn: '22h' // expires in 24 hours
                  });
             console.log(token);
